@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Test page</title>
+        <meta charset="UTF-8">
+        <style>
+            button {background-color: #c8deff ;font-size: 2em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+            #questioncharacter {font-size: 9em;}
+            #options {font-size: 1.5em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
+            #feedback{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
+        </style>
+    </head>
+    <body>
+        <button id="thebutton" onclick="nextquestion()">Begin</button>
+        <span id="correctanswers">0</span>/24
+       <div id="questioncharacter">    
+       </div>
+       <div id="options">
+               <input type="checkbox" id="checkbox1" onclick="checkinganswer(0)"></input><span id="option1"></span><br>
+               <input type="checkbox" id="checkbox2" onclick="checkinganswer(1)"></input><span id="option2"></span><br>
+               <input type="checkbox" id="checkbox3" onclick="checkinganswer(2)"></input><span id="option3"></span><br>
+               <div id="feedback">
+               </div>    
+       </div>
+       <script>
+           var questions =[
+               ["は",["ha","ho","ra"],0],
+               ["し",["gi","chi","shi"],2],
+               ["だ",["ba","do","da"],2],
+               ["ぐ",["gu","ri","ru"],0],
+               ["め",["nu","me","wa"],1],
+               ["ゆ",["o","yu","no"],1],
+               ["ぞ",["te","mo","zo"],2],
+               ["え",["ge","o","e"],2],
+               ["ぴ",["bi","pi","pe"],1],
+               ["む",["mu","wo","bu"],0],
+               ["ぶ",["bu","fu","u"],0],
+               ["ぬ",["ru","nu","ne"],1],
+               ["ru",["り","る","ろ"],1],
+               ["chi",["ち","ら","ぢ"],0],
+               ["wo",["を","も","す"],0],
+               ["ya",["す","う","や"],2],
+               ["bo",["ぼ","ぽ","ほ"],0],
+               ["do",["ご","ど","と"],1],
+               ["ro",["ろ","る","ら"],0],
+               ["ke",["よ","え","け"],2],
+               ["za",["ざ","ひ","ぴ"],0],
+               ["go",["ご","う","え"],0],
+               ["i",["あ","よ","い"],2],
+               ["n",["つ","に","ん"],2],           
+       ];
+
+           var currentquestion =0;
+           var questionscorrect =0;
+           
+           function questioncontent (question)
+           {
+               document.getElementById ("questioncharacter").innerHTML=question [0];
+               document.getElementById ("option1").innerHTML=question [1][0];
+               document.getElementById ("option2").innerHTML=question [1][1];
+               document.getElementById ("option3").innerHTML=question [1][2];
+            }
+
+            function checkinganswer (answer)
+            {
+                document.getElementById ("checkbox1").disabled=true;
+                document.getElementById ("checkbox2").disabled=true;
+                document.getElementById ("checkbox3").disabled=true;
+        
+               var correctanswer = questions[currentquestion] [2];
+            
+               if (answer==correctanswer) 
+               {
+                 document.getElementById ("feedback").innerHTML="Correct";
+                 questionscorrect=questionscorrect+1;
+                 document.getElementById ("correctanswers").innerHTML=questionscorrect;
+               }
+               else 
+               {
+                 document.getElementById ("feedback").innerHTML="Incorrect"; 
+               }
+               //This is after the question has been answered
+               currentquestion=currentquestion+1;
+               document.getElementById ("thebutton").innerHTML="Next";
+            }
+            function nextquestion ()
+            {
+                document.getElementById ("checkbox1").disabled=false;
+                document.getElementById ("checkbox2").disabled=false;
+                document.getElementById ("checkbox3").disabled=false;
+
+                document.getElementById ("checkbox1").checked=false;
+                document.getElementById ("checkbox2").checked=false;
+                document.getElementById ("checkbox3").checked=false;
+
+                document.getElementById ("feedback").innerHTML="";
+        
+                questioncontent(questions[currentquestion]);
+            }
+       </script>
+    </body>
+</html>
