@@ -3,15 +3,19 @@
     <head><title>Test page</title>
         <meta charset="UTF-8">
         <style>
+            body {border:solid 50px; border-color: #D4E6C4 ; }
+            h1 {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 2em;}
             button {background-color: #c8deff ;font-size: 2em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
             #questioncharacter {font-size: 9em;}
-            #options {font-size: 1.5em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
-            #feedback{font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
-        </style>
+            #options {font-size: 1.2em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
+            #feedback{font-size:1.8em;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
+            span {font-size: 2em; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}      
+       </style>
     </head>
     <body>
+        <h1>Test your understanding...</h1>
         <button id="thebutton" onclick="nextquestion()">Begin</button>
-        <span id="correctanswers">0</span>/24
+        <span id="correctanswers">0</span><span>/24</span>
        <div id="questioncharacter">    
        </div>
        <div id="options">
